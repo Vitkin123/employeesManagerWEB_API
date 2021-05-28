@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Database;
 using API.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class EmployeesController : ControllerBase
     {
         private DataContext _dbContext;
@@ -43,16 +44,18 @@ namespace API.Controllers
             return Ok(employee);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddNewEmployee([FromBody] Employee employee)
-        {
-            await _dbContext.Employees.AddAsync(employee);
-            await _dbContext.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created);
-        }
+        //  [Authorize(Roles = "Admin")]
+        // [HttpPost]
+        // public async Task<IActionResult> AddNewEmployee([FromBody] Employee employee)
+        // {
+        //     await _dbContext.Employees.AddAsync(employee);
+        //     await _dbContext.SaveChangesAsync();
+        //     return StatusCode(StatusCodes.Status201Created);
+        // }
 
+        //[Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmplyeeData(Guid id, Employee employeeObject)
+        public async Task<IActionResult> UpdateEmployeeData(Guid id, Employee employeeObject)
         {
             var employee = await _dbContext.Employees.FindAsync(id);
             if (employee == null)
@@ -66,6 +69,7 @@ namespace API.Controllers
             return Ok("Record updated successfully");
         }
 
+        // [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(Guid id)
         {

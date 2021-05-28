@@ -55,3 +55,9 @@
 /Users/yaroslavvitkin/RiderProjects/API/API/obj/Debug/net5.0/API.genruntimeconfig.cache
 /Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/AutoMapper.dll
 /Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/AuthenticationPlugin.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Newtonsoft.Json.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
