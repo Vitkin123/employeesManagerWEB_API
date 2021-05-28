@@ -59,5 +59,7 @@
 /Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
 /Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
 /Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
-/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Newtonsoft.Json.dll
 /Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/Users/yaroslavvitkin/RiderProjects/API/API/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

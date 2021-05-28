@@ -26,11 +26,13 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<List<Employee>> GetEmployees()
         {
             return await _dbContext.Employees.ToListAsync();
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeById(Guid id)
         {
@@ -44,16 +46,7 @@ namespace API.Controllers
             return Ok(employee);
         }
 
-        //  [Authorize(Roles = "Admin")]
-        // [HttpPost]
-        // public async Task<IActionResult> AddNewEmployee([FromBody] Employee employee)
-        // {
-        //     await _dbContext.Employees.AddAsync(employee);
-        //     await _dbContext.SaveChangesAsync();
-        //     return StatusCode(StatusCodes.Status201Created);
-        // }
-
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployeeData(Guid id, Employee employeeObject)
         {
@@ -69,7 +62,7 @@ namespace API.Controllers
             return Ok("Record updated successfully");
         }
 
-        // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(Guid id)
         {

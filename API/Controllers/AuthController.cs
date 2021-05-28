@@ -28,7 +28,6 @@ namespace API.Controllers
             _auth = new AuthService(_configuration);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> LogIn([FromBody] Employee employee)
         {
@@ -41,7 +40,24 @@ namespace API.Controllers
             if (employeeInDatabase.Password != employee.Password)
                 return Unauthorized();
 
-            return Ok($"Welcome {employeeInDatabase.Name}.");
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Email, employee.Email),
+                new Claim(ClaimTypes.Email, employee.Email),
+                new Claim(ClaimTypes.Role, employeeInDatabase.Role)
+            };
+            var token = _auth.GenerateAccessToken(claims);
+
+            return new ObjectResult(new
+            {
+                access_token = token.AccessToken,
+                expires_in = token.ExpiresIn,
+                token_type = token.TokenType,
+                creation_Time = token.ValidFrom,
+                expiration_Time = token.ValidTo,
+                employee_id = employeeInDatabase.Id,
+                role = employeeInDatabase.Role
+            });
         }
 
         [HttpPost]
