@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Database;
 using API.Models;
@@ -25,22 +27,37 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
+
         [HttpGet]
         [Authorize]
-        public async Task<List<Employee>> GetEmployees()
+        public async Task<ICollection> GetEmployees()
+        {
+            var allEmployees = await _dbContext.Employees.ToListAsync();
+            var employeesToReturn = allEmployees
+                .Select(employee => new // Here we making anon type to return specific fields available to employee 
+                {
+                    employee.Id,
+                    employee.Name,
+                    employee.LastName,
+                })
+                .ToList();
+            return employeesToReturn;
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public async Task<List<Employee>> GetAllEmployeesData()
         {
             return await _dbContext.Employees.ToListAsync();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEmployeeById(Guid id)
         {
             var employee = await _dbContext.Employees.FindAsync(id);
             if (employee == null)
-            {
                 return NotFound("Employee not found.");
-            }
 
 
             return Ok(employee);
@@ -53,7 +70,6 @@ namespace API.Controllers
             var employee = await _dbContext.Employees.FindAsync(id);
             if (employee == null)
                 return NotFound("Employee not found");
-
 
             //Automapping all props to updated object in db
 
