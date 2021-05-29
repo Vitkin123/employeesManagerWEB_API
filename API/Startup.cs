@@ -37,6 +37,12 @@ namespace API
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "API", Version = "v1"}); });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    policy => { policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000"); });
+            });
+
             services.AddDbContext<DataContext>(opt => { opt.UseSqlite(_connectionString); });
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
             services.AddTransient<ISalaryCalculationService, SalaryCalculationService>();
@@ -69,6 +75,7 @@ namespace API
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

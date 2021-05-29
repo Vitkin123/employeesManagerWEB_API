@@ -31,7 +31,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+       // [Authorize]
         public async Task<ICollection> GetEmployees()
         {
             var allEmployees = await _dbContext.Employees.ToListAsync();
