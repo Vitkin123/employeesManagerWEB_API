@@ -2,6 +2,14 @@ using System;
 
 namespace API.Models
 {
+    public enum Position
+    {
+        Developer,
+        HR,
+        QA,
+        DataAnalyst
+    }
+
     public class Employee
     {
         public Guid Id { get; set; }
@@ -13,5 +21,7 @@ namespace API.Models
         public DateTime BirthDate { get; set; }
         public DateTime StartWorkingDate { get; set; }
         public float Salary { get; set; }
+        public Position Position { get; set; }
+        public float MonthsOfExperience { get; set; }
     }
 }

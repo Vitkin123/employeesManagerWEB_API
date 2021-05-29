@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using API.Core;
 using API.Database;
+using API.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,7 @@ namespace API
 
             services.AddDbContext<DataContext>(opt => { opt.UseSqlite(_connectionString); });
             services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-
+            services.AddTransient<ISalaryCalculationService, SalaryCalculationService>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

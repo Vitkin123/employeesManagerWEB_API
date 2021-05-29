@@ -3,7 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using API.Database;
 using API.Models;
+using API.Services.Interfaces;
 using AuthenticationPlugin;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +22,17 @@ namespace API.Controllers
         private DataContext _context;
         private IConfiguration _configuration;
         private readonly AuthService _auth;
+        private IMapper _mapper;
+        private ISalaryCalculationService _salaryCalculationService;
 
-        public AuthController(DataContext context, IConfiguration configuration)
+        public AuthController(DataContext context, IConfiguration configuration, IMapper mapper,
+            ISalaryCalculationService calculationService)
         {
             _context = context;
             _configuration = configuration;
             _auth = new AuthService(_configuration);
+            _mapper = mapper;
+            _salaryCalculationService = calculationService;
         }
 
         [HttpPost]
@@ -69,18 +76,15 @@ namespace API.Controllers
             if (employeeWithTheSameEmail != null)
                 return BadRequest("Employee with the same email already exists.");
 
-            var employeeObj = new Employee
-            {
-                Name = employee.Name,
-                Email = employee.Email,
-                StartWorkingDate = DateTime.Now,
-                BirthDate = employee.BirthDate,
-                Salary = employee.Salary,
-                LastName = employee.LastName,
-                Password = employee.Password,
-                Role = "Employee"
-            };
-            await _context.Employees.AddAsync(employeeObj);
+
+            var newEmployeeObj = new Employee();
+
+            _mapper.Map(employee, newEmployeeObj);
+
+            newEmployeeObj.Salary =
+                _salaryCalculationService.CalculateSalary(employee.MonthsOfExperience, employee.Position);
+
+            await _context.Employees.AddAsync(newEmployeeObj);
             await _context.SaveChangesAsync();
             return StatusCode(StatusCodes.Status201Created);
         }

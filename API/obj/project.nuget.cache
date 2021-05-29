@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9t5OgqUwsc2+wISpswtmhfZZH6tLjI9h3V8Gs9QjUESpBqgja+pFidxKXzbQUR785gI8RhLvtnH2XdiJSLY0Qg==",
+  "dgSpecHash": "llUpRCS4DyZ8Z3YFdRe+QbUMI9agGvKAhi9tMMbnbYARgm7M0PCkEsATlETMYZVhYeuZndzVTOr0rbakmT3P3A==",
   "success": true,
-  "projectFilePath": "/Users/yaroslavvitkin/RiderProjects/API/API/API.csproj",
+  "projectFilePath": "/Users/yaroslavvitkin/Desktop/Manager/API/API/API.csproj",
   "expectedPackageFiles": [
     "/Users/yaroslavvitkin/.nuget/packages/aspnetcore.authentication.plugin/1.0.1/aspnetcore.authentication.plugin.1.0.1.nupkg.sha512",
     "/Users/yaroslavvitkin/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",

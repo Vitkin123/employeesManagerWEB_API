@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Core;
 using API.Database;
 using API.Models;
+using API.Services.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,12 +23,12 @@ namespace API.Controllers
         private DataContext _dbContext;
         private IMapper _mapper;
 
+
         public EmployeesController(DataContext context, IMapper mapper)
         {
             _dbContext = context;
             _mapper = mapper;
         }
-
 
         [HttpGet]
         [Authorize]

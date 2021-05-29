@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yaroslavvitkin/RiderProjects/API/API/API.csproj": {}
+    "/Users/yaroslavvitkin/Desktop/Manager/API/API/API.csproj": {}
   },
   "projects": {
-    "/Users/yaroslavvitkin/RiderProjects/API/API/API.csproj": {
+    "/Users/yaroslavvitkin/Desktop/Manager/API/API/API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yaroslavvitkin/RiderProjects/API/API/API.csproj",
+        "projectUniqueName": "/Users/yaroslavvitkin/Desktop/Manager/API/API/API.csproj",
         "projectName": "API",
-        "projectPath": "/Users/yaroslavvitkin/RiderProjects/API/API/API.csproj",
+        "projectPath": "/Users/yaroslavvitkin/Desktop/Manager/API/API/API.csproj",
         "packagesPath": "/Users/yaroslavvitkin/.nuget/packages/",
-        "outputPath": "/Users/yaroslavvitkin/RiderProjects/API/API/obj/",
+        "outputPath": "/Users/yaroslavvitkin/Desktop/Manager/API/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/yaroslavvitkin/.nuget/NuGet/NuGet.Config"
